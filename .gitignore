@@ -1,0 +1,13 @@
+# Lo que nunca se sube
+sistema/privado/
+.env
+.env.*
+*.pem
+*.key
+*.pfx
+*.kdbx
+*.sqlite
+*.db
+*.log
+Thumbs.db
+.obsidian/

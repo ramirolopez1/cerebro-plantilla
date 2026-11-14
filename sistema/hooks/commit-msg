@@ -1,0 +1,34 @@
+#!/bin/sh
+# Regla del cerebro: un commit de agente solo agrega notas nuevas en buzon/.
+# Los commits de la rutina empiezan con [integracion] y los de una
+# sesion de curacion con el dueño, con [curacion]. Esos pueden tocar el resto.
+
+archivo_mensaje="${1}"
+primera=$(head -n 1 "$archivo_mensaje")
+
+case "$primera" in
+  "[curacion]"*|"[integracion]"*) exit 0 ;;
+esac
+
+tab=$(printf '\t')
+malos=$(git diff --cached --name-status | while IFS="$tab" read -r estado ruta resto; do
+  case "$estado" in
+    A)
+      case "$ruta" in
+        buzon/README.md|buzon/*/*) echo "  $estado  $ruta" ;;
+        buzon/*.md) ;;
+        *) echo "  $estado  $ruta" ;;
+      esac
+      ;;
+    *) echo "  $estado  $ruta $resto" ;;
+  esac
+done)
+
+if [ -n "$malos" ]; then
+  echo "Commit rechazado: los agentes solo agregan notas nuevas (.md) directamente en buzon/."
+  echo "Esto queda fuera de la regla:"
+  echo "$malos"
+  echo "Formato de las notas: buzon/README.md. Reglas: sistema/reglas-agentes.md."
+  exit 1
+fi
+exit 0

@@ -1,0 +1,19 @@
+#!/bin/sh
+# Corre la auditoria de secretos sobre lo que se va a commitear.
+
+raiz=$(git rev-parse --show-toplevel)
+
+if command -v powershell.exe >/dev/null 2>&1; then
+  ps=powershell.exe
+elif command -v pwsh >/dev/null 2>&1; then
+  ps=pwsh
+else
+  echo "Aviso: no hay PowerShell en este equipo. Instalalo para correr la auditoria de secretos."
+  exit 0
+fi
+
+if ! "$ps" -NoProfile -File "$raiz/sistema/auditar-secretos.ps1" -Staged; then
+  echo "Commit rechazado: la auditoria encontro algo sensible. Sacalo y volve a intentar."
+  exit 1
+fi
+exit 0

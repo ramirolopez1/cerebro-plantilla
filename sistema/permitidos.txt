@@ -1,0 +1,3 @@
+# Textos exactos que la auditoria deja pasar aunque coincidan con una regla.
+# Uno por linea. Solo nombres tecnicos inofensivos; nunca un dominio, una direccion ni un dato real.
+System.IO
