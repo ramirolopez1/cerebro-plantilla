@@ -46,4 +46,4 @@ No. Lo difícil (leer mucho, decidir qué importa, detectar contradicciones) lo 
 
 ## Créditos
 
-La idea de un segundo cerebro en Markdown leído por todos tus agentes, con un índice y un buzón, la mostró Benjamín Cordero en su video "Fable 5.2 ahora es el segundo cerebro de TODOS mis agentes". Se apoya en el patrón "LLM Wiki" de Andrej Karpathy: en vez de buscar en documentos cada vez, el agente construye y mantiene una wiki de archivos que se acumula. Esta plantilla es una adaptación independiente, sin código ni contenido copiado de ninguno de los dos.
+La idea de un segundo cerebro en Markdown leído por todos tus agentes, con un índice y un buzón. Se apoya en el patrón "LLM Wiki" de un divulgador de ia que dice: en vez de buscar en documentos cada vez, el agente construye y mantiene una wiki de archivos que se acumula. Esta plantilla es una adaptación independiente, sin código ni contenido copiado de ninguno de los dos.
